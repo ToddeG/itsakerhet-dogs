@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="sv"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layouts/layouttemplate"
+      data-theme="light">
+
+<th:block layout:fragment="extraHead">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@event-calendar/build@1.5.0/event-calendar.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@event-calendar/build@1.5.0/event-calendar.min.js"></script>
+    <script src="/js/modal.js"></script>
+
+    <script>
+        function validateForm() {
+            const price = document.getElementById("price").value;
+            const errorMessageDiv = document.getElementById("error-message");
+            const successMessageDiv = document.getElementById("success-message");
+
+            if (!/^\d+$/.test(price)) {
+                errorMessageDiv.textContent = "Priset får bara innehålla siffror.";
+                successMessageDiv.textContent = "";
+                return false;
+            }
+
+            successMessageDiv.textContent = "";
+            errorMessageDiv.textContent = "";
+            return true;
+        }
+    </script>
+</th:block>
+
+<div layout:fragment="mainContent">
+    <table class="tabulator-table">
+        <thead>
+        <tr class="tabulator-row">
+            <th class="tabulator-cell">Name</th>
+            <th>Breed</th>
+            <th>Age</th>
+            <th>Size</th>
+            <th>Price</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody id="tablerows">
+        <form th:action="@{/update}" th:object="${dog}" method="post" onsubmit="return validateForm()">
+            <th><input type="text" id="name" th:field="*{name}"></th>
+            <td><input type="text" id="breed" th:field="*{breed}"></td>
+            <td><input type="text" id="age" th:field="*{age}"></td>
+            <td><input type="text" id="size" th:field="*{size}"></td>
+            <td><input type="text" id="price" th:field="*{price}"></td>
+            <input type="hidden" id="id" th:field="*{id}"><br>
+            <input type="hidden" id="image" th:field="*{image}"><br>
+            <input type="hidden" id="gender" th:field="*{gender}"><br>
+            <td><input type="submit" value="Submit" class="listbutton"></td>
+        </form>
+        </tbody>
+    </table>
+
+    <div id="error-message" th:text="${errorMessage}" style="color: red; font-size: 20px; font-weight: bold"></div>
+    <div id="success-message" th:text="${successMessage}" style="color: green; font-size: 20px; font-weight: bold"></div>
+</div>
+</html>

@@ -52,33 +52,33 @@
     <br/><br/>
     <form method="GET">
         Search:
-        <input type="text" name="q" value="" />
+        <input type="text" name="searchQuery" th:value="${searchQuery}" />
     </form>
     <table class="tabulator-table">
         <thead>
         <tr class="tabulator-row">
             <th class="tabulator-cell">
                 Name
-                <a href="?"><i class="fa-solid fa-arrow-up-a-z"></i></a>
-                <a href="?"><i class="fa-solid fa-arrow-down-z-a"></i></a>
+                <a th:href="@{|?searchQuery=${searchQuery}&sortCol=name&sortOrder=asc|}"><i class="fa-solid fa-arrow-up-a-z"></i></a>
+                <a th:href="@{|?searchQuery=${searchQuery}&sortCol=name&sortOrder=desc|}"><i class="fa-solid fa-arrow-down-z-a"></i></a>
             </th>
 
             <th >
                 Breed
-                <a href="?"><i class="fa-solid fa-arrow-up-a-z"></i></a>
-                <a href="?"><i class="fa-solid fa-arrow-down-z-a"></i></a>
+                <a th:href="@{|?searchQuery=${searchQuery}&sortCol=breed&sortOrder=asc|}"><i class="fa-solid fa-arrow-up-a-z"></i></a>
+                <a th:href="@{|?searchQuery=${searchQuery}&sortCol=breed&sortOrder=desc|}"><i class="fa-solid fa-arrow-down-z-a"></i></a>
             </th>
             <th>Age
-                <a href="?"><i class="fa-solid fa-arrow-up-a-z"></i></a>
-                <a href="?"><i class="fa-solid fa-arrow-down-z-a"></i></a>
+                <a th:href="@{|?searchQuery=${searchQuery}&sortCol=age&sortOrder=asc|}"><i class="fa-solid fa-arrow-up-a-z"></i></a>
+                <a th:href="@{|?searchQuery=${searchQuery}&sortCol=age&sortOrder=desc|}"><i class="fa-solid fa-arrow-down-z-a"></i></a>
             </th>
             <th>Size
-                <a href="?"><i class="fa-solid fa-arrow-up-a-z"></i></a>
-                <a href="?"><i class="fa-solid fa-arrow-down-z-a"></i></a>
+                <a th:href="@{|?searchQuery=${searchQuery}&sortCol=size&sortOrder=asc|}"><i class="fa-solid fa-arrow-up-a-z"></i></a>
+                <a th:href="@{|?searchQuery=${searchQuery}&sortCol=size&sortOrder=desc|}"><i class="fa-solid fa-arrow-down-z-a"></i></a>
             </th>
             <th>Price
-                <a href="?"><i class="fa-solid fa-arrow-up-a-z"></i></a>
-                <a href="?"><i class="fa-solid fa-arrow-down-z-a"></i></a>
+                <a th:href="@{|?searchQuery=${searchQuery}&sortCol=price&sortOrder=asc|}"><i class="fa-solid fa-arrow-up-a-z"></i></a>
+                <a th:href="@{|?searchQuery=${searchQuery}&sortCol=price&sortOrder=desc|}"><i class="fa-solid fa-arrow-down-z-a"></i></a>
             </th>
             <th></th>
         </tr>
@@ -92,7 +92,7 @@
             <td th:text="${dog.getSize()}"></td>
             <td th:text="${dog.getPrice()}"></td>
             <td>
-                <a class="listbutton">Edit</a>
+                <a th:href="@{/admin/editByView/{id}(id=${dog.getId()})}" class="listbutton">Edit</a>
             </td>
         </tr>
 
