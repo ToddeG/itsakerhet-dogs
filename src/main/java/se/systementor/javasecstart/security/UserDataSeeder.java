@@ -26,4 +26,5 @@ public class UserDataSeeder {
         userRepository.save(user);
     }
 
+
 }

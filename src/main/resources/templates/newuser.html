@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="sv"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layouts/layouttemplate"
+      data-theme="light">
+
+
+<th:block layout:fragment="extraHead">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@event-calendar/build@1.5.0/event-calendar.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@event-calendar/build@1.5.0/event-calendar.min.js"></script>
+    <script src="/js/modal.js"></script>
+
+</th:block>
+
+<header>
+    <div class="content">
+        <div class="btn-left">
+            <button class="btn btn-blue">
+                <span class="fas fa-plus mr-2"></span>
+                New Task
+            </button>
+        </div>
+        <div class="btn-right">
+            <button class="btn btn-sec left-radius">Share</button>
+            <button class="btn btn-sec right-radius">Export</button>
+        </div>
+    </div>
+</header>
+<div layout:fragment="mainContent">
+
+    <div class="row-box">
+        <div class="col-boxes-1">
+            <div class="col-table">
+                <div class="table-section">
+                    <div class="header-table">
+                        <h2>Välkommen till Stefans Hundhem</h2>
+                        <!--                        <a href="#">see all</a>-->
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="col-boxes-2">
+            <div class="card-second">
+                <div class="card-body">
+                    <div class="text-top">
+                        <form th:action="@{/login/regReciever}" method="post">
+                            <a>
+                                <h2>Skapa ett nytt konto med din mejladress.</h2>
+                            </a>
+                            <div>
+                                <label for="username">Användarnamn</label>
+                                <input type="text" id="username" name="username" required>
+                            </div>
+                            <div>
+                                <label for="password">Lösenord:</label>
+                                <input type="password" id="password" name="password" required>
+                            </div>
+                            <button type="submit">Skapa</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+</div>
+
+
+
+
+
+
+</html>

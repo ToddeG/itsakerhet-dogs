@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import se.systementor.javasecstart.security.ConcreteUserDetails;
 import se.systementor.javasecstart.security.User;
@@ -28,5 +29,13 @@ public class UserService implements UserDetailsService {
             throw new UsernameNotFoundException("Could not find user");
         }
         return new ConcreteUserDetails(user);
+    }
+
+    public void addUser(String mail, String password){
+
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        String hash = encoder.encode(password);
+        User user = User.builder().enabled(true).password(hash).username(mail).build();
+        userRepository.save(user);
     }
 }
