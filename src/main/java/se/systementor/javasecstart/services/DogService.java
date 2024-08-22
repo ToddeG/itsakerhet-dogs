@@ -20,7 +20,12 @@ public class DogService {
     public List<Dog> findAllSorted(Sort sort){
         return dogRepository.findAll(sort);
     }
+    public String sanitizeSearchQuery(String searchQuery) {
+        return searchQuery.replaceAll("[^a-zA-Z0-9\\s'\\-åÅäÄöÖ]", "").trim();
+    }
     public List<Dog> findAllByStringQuery(String searchQuery, Sort sort){
+        searchQuery = sanitizeSearchQuery(searchQuery);
+        System.out.println(searchQuery);
         try {
             int priceQuery = Integer.parseInt(searchQuery);
             return dogRepository.findAllByNameContainsOrBreedContainsOrAgeContainsOrSizeContainsOrPrice

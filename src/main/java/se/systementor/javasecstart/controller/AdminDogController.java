@@ -25,7 +25,9 @@ public class AdminDogController {
                 @RequestParam(defaultValue = "ASC") String sortOrder,
                 @RequestParam(defaultValue = "") String searchQuery){
         model.addAttribute("activeFunction", "home");
-
+        if(!(sortOrder.equalsIgnoreCase("ASC") || sortOrder.equalsIgnoreCase("DESC"))){
+            sortOrder = "ASC";
+        }
         searchQuery = searchQuery.trim();
         model.addAttribute("searchQuery", searchQuery);
         Sort sort = Sort.by(Sort.Direction.fromString(sortOrder), sortCol);
