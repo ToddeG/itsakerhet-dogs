@@ -83,19 +83,18 @@
 
                         <div sec:authorize="isAuthenticated()">
                         <li>
-                            <a th:href="@{/hash/hash-crack}" class="link-flex">
+                            <a href="#" class="link-flex">
                                     <span class="sidebar-icon">
                                         <i class="fas fa-inbox"></i>
-                                        <span class="sidebar-text"> Crack hash</span>
+                                        <span class="sidebar-text"> Messages</span>
                                     </span>
+                                <span class="messages-number">4</span>
                             </a>
                         </li>
                         <li>
-                            <a th:href="@{/hash}">
-                                <span class="sidebar-icon">
-                                    <i class="fas fa-chart-line"></i>
-                                <span class="sidebar-text">HashDemo</span>
-                                </span>
+                            <a href="#">
+                                <span class="sidebar-icon"><i class="fas fa-chart-line"></i></span>
+                                <span class="sidebar-text">Traffic & Engagement</span>
                             </a>
                         </li>
                         <li>

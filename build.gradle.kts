@@ -33,7 +33,6 @@ dependencies {
     implementation("nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-validation")
-    implementation("org.springframework.boot:spring-boot-starter-oauth2-client")
     implementation("com.github.javafaker:javafaker:1.0.2") { exclude ("org.yaml") }
 
     compileOnly("org.projectlombok:lombok")
